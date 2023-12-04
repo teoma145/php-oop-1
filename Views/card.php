@@ -14,6 +14,9 @@
                 <div>
                 <?= $genre ?>
                 </div>
+                <div>
+                <?= $original_language?>
+                </div>
                 <div><?= $template?></div>
             </div>
 

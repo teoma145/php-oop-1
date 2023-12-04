@@ -9,15 +9,16 @@ class Movie{
     private string $overview;
     private string $vote_average;
     private string $poster_path;    
-
+    private string $original_language;
     public Genre $genre;
 
-    function __construct($id,$title,$overview,$vote_average,$poster_path, Genre $genre){
+    function __construct($id,$title,$overview,$vote_average,$poster_path,$original_language, Genre $genre){
         $this->id = $id;
         $this->title = $title;
         $this->overview = $overview;
         $this->vote_average = $vote_average;
         $this->poster_path = $poster_path;
+        $this->original_language = $original_language;
         $this->genre = $genre; 
     }
     public function getVote(){
@@ -28,7 +29,7 @@ class Movie{
 
         }
         $template .= "</p>";
-        var_dump($template);
+        
         return $template;
         
     }
@@ -38,9 +39,12 @@ class Movie{
         $content = $this->overview;
         $custom = $this->vote_average;
         $genre = $this->genre->name;
-        $template = $this->getVote();;
+        $original_language = $this->original_language;
+        $template = $this->getVote();
+        
         include __DIR__.'/../Views/card.php';
     }
+   
 }
 
 
@@ -54,7 +58,7 @@ $movies = [];
 $action = New Genre('action');
 $comedy = New Genre('comedy');
 foreach ($movieList as $item){
-    $movies[]= new Movie($item['id'],$item['title'],$item['overview'],$item['vote_average'],$item['poster_path'],$action);
+    $movies[]= new Movie($item['id'],$item['title'],$item['overview'],$item['vote_average'],$item['poster_path'],$item['original_language'],$action);
 }
 
 
