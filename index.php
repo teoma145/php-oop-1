@@ -8,7 +8,9 @@ include __DIR__.'/Model/Movie.php';
     <?php foreach($movies as $movie) 
     $movie->printcard();
     ?>
+    
 </div>
+    
 </section>
 
 

@@ -22,6 +22,15 @@ class Movie{
     }
     public function getVote(){
         $vote=ceil($this->vote_average/2);
+        $template = '<p>';
+        for($n = 1 ;$n <= 5; $n++){
+            $template .= $n <= $vote ? '<i class="fa-solid fa-star"></i>' : '<i class="fa regular fa-star"></i>';
+
+        }
+        $template .= "</p>";
+        var_dump($template);
+        return $template;
+        
     }
     public function printcard(){
         $image = $this->poster_path;
@@ -29,6 +38,7 @@ class Movie{
         $content = $this->overview;
         $custom = $this->vote_average;
         $genre = $this->genre->name;
+        $template = $this->getVote();;
         include __DIR__.'/../Views/card.php';
     }
 }
